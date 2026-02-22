@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 900" role="img" aria-labelledby="title desc">
+  <title id="title">Data Pipeline - Scraping to Deployment</title>
+  <desc id="desc">Architecture view showing web scraping, raw storage, transformation, warehouse, orchestration and deployment monitoring.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f1c3a" />
+      <stop offset="50%" stop-color="#102547" />
+      <stop offset="100%" stop-color="#163563" />
+    </linearGradient>
+    <linearGradient id="card" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1a3762" />
+      <stop offset="100%" stop-color="#204472" />
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="160%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="#081224" flood-opacity="0.45" />
+    </filter>
+    <marker id="arrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M0,0 L12,6 L0,12 Z" fill="#64ffda" />
+    </marker>
+  </defs>
+
+  <rect width="1400" height="900" fill="url(#bg)" />
+  <g opacity="0.22">
+    <circle cx="1240" cy="120" r="220" fill="#64ffda" />
+    <circle cx="190" cy="760" r="240" fill="#89a8ff" />
+  </g>
+
+  <text x="700" y="86" text-anchor="middle" fill="#e6f1ff" font-size="46" font-family="Segoe UI, Arial, sans-serif" font-weight="700">
+    End-to-End Data Pipeline
+  </text>
+  <text x="700" y="128" text-anchor="middle" fill="#9cb2d8" font-size="24" font-family="Segoe UI, Arial, sans-serif">
+    From web scraping to cloud deployment
+  </text>
+
+  <g filter="url(#shadow)">
+    <rect x="70" y="190" width="365" height="146" rx="20" fill="url(#card)" />
+    <rect x="518" y="190" width="365" height="146" rx="20" fill="url(#card)" />
+    <rect x="966" y="190" width="365" height="146" rx="20" fill="url(#card)" />
+
+    <rect x="70" y="462" width="365" height="146" rx="20" fill="url(#card)" />
+    <rect x="518" y="462" width="365" height="146" rx="20" fill="url(#card)" />
+    <rect x="966" y="462" width="365" height="146" rx="20" fill="url(#card)" />
+  </g>
+
+  <g font-family="Segoe UI, Arial, sans-serif">
+    <text x="102" y="232" fill="#64ffda" font-size="22" font-weight="700">01  Web Scraping</text>
+    <text x="102" y="264" fill="#d3e2ff" font-size="18">Rotating crawlers collect target data</text>
+    <text x="102" y="292" fill="#d3e2ff" font-size="18">retry policy + anti-block resilience</text>
+
+    <text x="550" y="232" fill="#64ffda" font-size="22" font-weight="700">02  Raw Data Lake</text>
+    <text x="550" y="264" fill="#d3e2ff" font-size="18">JSON files stored by source/date</text>
+    <text x="550" y="292" fill="#d3e2ff" font-size="18">versioned bronze zone</text>
+
+    <text x="998" y="232" fill="#64ffda" font-size="22" font-weight="700">03  ETL + Data Quality</text>
+    <text x="998" y="264" fill="#d3e2ff" font-size="18">Schema checks, dedup, enrichment</text>
+    <text x="998" y="292" fill="#d3e2ff" font-size="18">dbt tests and lineage tracking</text>
+
+    <text x="102" y="504" fill="#64ffda" font-size="22" font-weight="700">04  Warehouse</text>
+    <text x="102" y="536" fill="#d3e2ff" font-size="18">Curated marts in PostgreSQL</text>
+    <text x="102" y="564" fill="#d3e2ff" font-size="18">optimized for analytics queries</text>
+
+    <text x="550" y="504" fill="#64ffda" font-size="22" font-weight="700">05  Orchestration</text>
+    <text x="550" y="536" fill="#d3e2ff" font-size="18">Airflow DAGs schedule every 15 min</text>
+    <text x="550" y="564" fill="#d3e2ff" font-size="18">retries + backfills + alerts</text>
+
+    <text x="998" y="504" fill="#64ffda" font-size="22" font-weight="700">06  Deployment</text>
+    <text x="998" y="536" fill="#d3e2ff" font-size="18">Docker + CI/CD to Azure</text>
+    <text x="998" y="564" fill="#d3e2ff" font-size="18">API serving + Grafana monitoring</text>
+  </g>
+
+  <g stroke="#64ffda" stroke-width="4" fill="none" marker-end="url(#arrow)">
+    <line x1="435" y1="263" x2="518" y2="263" />
+    <line x1="883" y1="263" x2="966" y2="263" />
+    <path d="M1148 336 L1148 405 L252 405 L252 462" />
+    <line x1="435" y1="535" x2="518" y2="535" />
+    <line x1="883" y1="535" x2="966" y2="535" />
+  </g>
+
+  <g font-family="Consolas, monospace">
+    <rect x="388" y="678" width="624" height="112" rx="16" fill="#0d223f" stroke="#284f83" />
+    <text x="424" y="724" fill="#d8e7ff" font-size="26">SLA:</text>
+    <text x="500" y="724" fill="#64ffda" font-size="26">99.5% pipeline uptime</text>
+    <text x="424" y="760" fill="#d8e7ff" font-size="26">Freshness:</text>
+    <text x="572" y="760" fill="#64ffda" font-size="26">&lt; 20 minutes end-to-end latency</text>
+  </g>
+</svg>

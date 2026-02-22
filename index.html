@@ -256,50 +256,93 @@
     /* ════════════════════════════════════
        HERO
     ════════════════════════════════════ */
-    #hero { min-height: 100vh; padding-top: 100px; }
-    .hero-inner { max-width: 1000px; }
+    #hero {
+      min-height: 100vh;
+      padding-top: 120px;
+      justify-content: flex-start;
+    }
+    .hero-inner { max-width: 760px; }
     .hero-greeting {
       color: var(--green);
       font-family: var(--font-mono);
       font-size: clamp(14px, 5vw, 16px);
-      margin-bottom: 20px;
+       margin-bottom: 14px;
     }
     .hero-name {
       color: var(--lightest-slate);
       font-family: var(--font-sans);
-      font-size: clamp(40px, 8vw, 80px);
+      font-size: clamp(42px, 6.5vw, 68px);
       font-weight: 600;
-      line-height: 1.1;
-      margin-bottom: 10px;
+      line-height: 1.06;
+      letter-spacing: -.01em;
+      white-space: nowrap;
+      margin-bottom: 14px;
     }
     .hero-tagline {
-      color: var(--slate);
+      color: var(--lightest-slate);
       font-family: var(--font-sans);
-      font-size: clamp(22px, 4.4vw, 48px);
+      font-size: clamp(22px, 3.3vw, 40px);
       font-weight: 600;
-      line-height: 1.16;
+      line-height: 1.25;
+      max-width: 740px;
+      margin-bottom: 24px;
+    }
+    .hero-body {
+      color: var(--slate);
+      max-width: 700px;
       margin-bottom: 30px;
     }
-    .hero-desc {
-      color: var(--slate);
-      font-size: clamp(15px, 2vw, 17px);
-      line-height: 1.7;
-      max-width: 540px;
-      margin-bottom: 50px;
+    .hero-body p {
+      font-size: clamp(16px, 2vw, 18px);
+      line-height: 1.6;
+      margin-bottom: 18px;
     }
-    .hero-desc a { color: var(--green); }
+    .hero-body p:last-child { margin-bottom: 0; }
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 4px;
+    }
     .hero-btn {
-      color: var(--green);
       font-family: var(--font-mono);
       font-size: 14px;
       letter-spacing: .1em;
-      padding: 20px 28px;
-      border: 1px solid var(--green);
+      padding: 14px 24px;
+      border: 1px solid transparent;
       border-radius: var(--border-radius);
       transition: var(--transition);
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 165px;
     }
-    .hero-btn:hover { background: var(--green-tint); }
+    .hero-btn-primary {
+      background: var(--green);
+      border-color: var(--green);
+      color: var(--navy);
+      font-weight: 600;
+    }
+    .hero-btn-primary:hover {
+      background: transparent;
+      color: var(--green);
+    }
+    .hero-btn-secondary {
+      border-color: var(--green);
+      color: var(--green);
+    }
+    .hero-btn-secondary:hover { background: var(--green-tint); }
+    .hero-btn-tertiary {
+      border-color: var(--slate);
+      color: var(--lightest-slate);
+    }
+    .hero-btn-tertiary:hover { border-color: var(--green); color: var(--green); }
+    .hero-btn:focus-visible {
+      outline: 2px solid var(--green);
+      outline-offset: 3px;
+      box-shadow: 0 0 0 4px rgba(100,255,218,.2);
+    }
 
     /* ════════════════════════════════════
        ABOUT
@@ -486,6 +529,13 @@
       display: flex; align-items: center; justify-content: center;
       position: relative; overflow: hidden;
     }
+    .fp-img-media {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform .5s var(--easing);
+    }
+    .fp-img:hover .fp-img-media { transform: scale(1.03); }
     .fp-img::before {
       content: '';
       position: absolute; inset: 0;
@@ -678,6 +728,13 @@
       header { padding: 0 25px; }
       nav { display: none; }
       .hamburger { display: flex; }
+      #hero { padding-top: 100px; }
+      .hero-inner { max-width: 100%; }
+      .hero-name { font-size: clamp(34px, 12vw, 56px); white-space: normal; }
+      .hero-tagline { font-size: clamp(22px, 7vw, 34px); margin-bottom: 24px; }
+      .hero-body { margin-bottom: 30px; }
+      .hero-actions { flex-direction: column; align-items: stretch; gap: 10px; }
+      .hero-btn { width: 100%; min-width: 0; }
       .about-grid { grid-template-columns: 1fr; }
       .about-photo { margin-top: 30px; }
       .exp-grid { flex-direction: column; }
@@ -710,12 +767,12 @@
         <path d="m4 7 8 6 8-6"/>
       </svg>
     </a>
-    <a href="#" aria-label="GitHub" title="GitHub">
+    <a href="https://github.com/oelkhazraj-sys" aria-label="GitHub" title="GitHub">
       <svg class="side-icon" viewBox="0 0 24 24">
         <path d="M9 18c-4 1.2-4-2-6-2M15 18v-3a3.4 3.4 0 0 0-.7-2.2c2.3-.3 4.7-1.1 4.7-5a3.9 3.9 0 0 0-1-2.7 3.6 3.6 0 0 0-.1-2.7s-.9-.3-3 1a10.4 10.4 0 0 0-6 0c-2.1-1.3-3-1-3-1a3.6 3.6 0 0 0-.1 2.7 3.9 3.9 0 0 0-1 2.7c0 3.9 2.4 4.7 4.7 5A3.4 3.4 0 0 0 9 15v3"/>
       </svg>
     </a>
-    <a href="#" aria-label="LinkedIn" title="LinkedIn">
+    <a href="https://www.linkedin.com/in/othman-elkhazraje/" aria-label="LinkedIn" title="LinkedIn">
       <svg class="side-icon" viewBox="0 0 24 24">
         <rect x="4" y="4" width="16" height="16" rx="2"/>
         <path d="M8 11v5M8 8h.01M12 16v-3a2 2 0 0 1 4 0v3M12 11v5"/>
@@ -759,16 +816,18 @@
     <!-- ── HERO ── -->
     <section id="hero" class="section">
       <div class="hero-inner">
-        <p class="hero-greeting fade" style="transition-delay:.1s">Hi, my name is</p>
-        <h1 class="hero-name fade" style="transition-delay:.2s">Othman ELKHAZRAJE.</h1>
-        <h2 class="hero-tagline fade" style="transition-delay:.3s">I I architect secure, enterprise-grade AI systems and translate complex ideas into scalable, production-ready IT solutions .</h2>
-        <p class="hero-desc fade" style="transition-delay:.4s">
-          I'm an Applied AI &amp; Enterprise Systems Engineer and in NLP,
-          specializing in ERP integration, secure cloud architecture on
-          <a href="#about">Azure</a>, and production-ready AI — with compliance-aligned delivery (GDPR / ISO 27001).
-        </p>
-        <div class="fade" style="transition-delay:.5s">
-          <a class="hero-btn" href="mailto:elkhazrajothman@gmail.com">Get In Touch</a>
+        <p class="hero-greeting fade" style="transition-delay:.1s">Hi, I&rsquo;m</p>
+        <h1 class="hero-name fade" style="transition-delay:.2s">Othman ELKHAZRAJE</h1>
+        <h2 class="hero-tagline fade" style="transition-delay:.3s">I design secure, enterprise-grade AI systems that turn ideas into scalable, production-ready solutions.</h2>
+        <div class="hero-body fade" style="transition-delay:.4s">
+          <p>Applied AI &amp; Enterprise Systems Engineer specializing in NLP and intelligent automation.</p>
+          <p>I help organizations into Intégration ERP ecosystems and secure cloud infrastructures on Azure.</p>
+          <p>Built for production - compliance-aligned delivery (GDPR / ISO 27001) and enterprise-ready.</p>
+        </div>
+        <div class="hero-actions fade" style="transition-delay:.5s">
+          <a class="hero-btn hero-btn-primary" href="#projects">View My Work</a>
+          <a class="hero-btn hero-btn-secondary" href="#contact">Let&rsquo;s Talk</a>
+          <a class="hero-btn hero-btn-tertiary" href="assets/CV.pdf" target="_blank" rel="noopener">Resume</a>
         </div>
       </div>
     </section>
@@ -778,24 +837,30 @@
       <h2 class="section-title fade"><span class="num">01.</span>About Me</h2>
       <div class="about-grid fade">
         <div class="about-text">
-          <p>Hello, I’m Othman — a Technology Architect focused on building secure, scalable, enterprise AI and IT infrastructures.</p>
+          <p>Hello, my name is Othman - some people call me &quot;the IT Guy.&quot;</p>
           <p>But what I really do is engineer intelligence inside enterprise systems.</p>
-          <p>I design intelligent platforms for mission-critical environments, operating at the intersection of ERP ecosystems, secure cloud infrastructure, and Artificial Intelligence.</p>
-          <p>Most companies invest in ERP. Very few unlock its full intelligence potential. That's where I operate.</p>
+          <p>I design intelligent platforms for mission-critical environments, operating at the intersection of ERP ecosystems, secure cloud infrastructure, and artificial intelligence.</p>
+          <p>Most companies invest in ERP. Very few unlock its full intelligence potential.</p>
+          <p>That's where I operate.</p>
           <p>My journey into AI started within enterprise architectures, where I saw how operational inefficiencies, fragmented data, and manual workflows were limiting strategic growth. That curiosity evolved into deep specialization - and a PhD in NLP - focused on building governed, production-ready AI systems.</p>
 
           <p class="skills-title">I specialize in:</p>
           <ul class="skills-list">
             <li>Operational AI triage systems</li>
+            <li>Decision Support systems</li>
+            <li>Engineering Systems Information</li>
             <li>Multilingual domain adaptation</li>
             <li>Governed retrieval architectures</li>
             <li>Evaluation-driven NLP pipelines</li>
+            <li>Infrastructure management and optimization</li>
+
           </ul>
 
           <p class="skills-title">Today, I bridge business-critical platforms with enterprise-grade AI:</p>
           <ul class="skills-list">
             <li>ERP ecosystems (Odoo, Sage X3, and enterprise environments)</li>
-            <li>Secure Azure cloud architectures</li>
+            <li>Azure cloud architectures</li>
+            <li>Data governance</li>
             <li>Infrastructure stabilization and performance optimization</li>
             <li>AI integration with governance, traceability, and measurable ROI</li>
           </ul>
@@ -806,10 +871,12 @@
             <li>Embedding AI directly into operational workflows</li>
             <li>Ensuring security, compliance, and auditability by design</li>
             <li>Delivering systems executives trust and teams rely on</li>
+            <li>Infrastructure management and optimization</li>
+
           </ul>
 
-          <p>I don't build experimental AI. I engineer enterprise-grade intelligence.</p>
-          <p>Applied AI &amp; Enterprise Systems Engineer | PhD in NLP | Operating across enterprise ecosystems.</p>
+          <p>I do not build experimental AI prototypes. I engineer enterprise-grade intelligence.</p>
+          <p><strong>Applied AI &amp; Enterprise Systems Engineer</strong> | <strong>PhD in NLP</strong> (School of Information Sciences, Rabat)</p>
         </div>
         <div class="about-photo">
           <div class="photo-wrapper">
@@ -933,17 +1000,17 @@
     <section id="projects" class="section">
       <h2 class="section-title fade"><span class="num">03.</span>Some Things I've Built</h2>
 
-      <!-- Featured projects -->
+      <!-- Latest Projects -->
       <div class="projects-featured">
 
         <div class="featured-project fade">
           <div class="fp-img-wrap">
-            <div class="fp-img">
-              <span class="fp-img-label">01</span>
-            </div>
+            <a class="fp-img" href="#contact" aria-label="View details about the AI ERP Knowledge Assistant project">
+              <img class="fp-img-media" src="assets/ai-erp-knowledge-assistant.svg" alt="AI ERP assistant architecture with ingestion, vector search, access control and cited answers" loading="lazy" />
+            </a>
           </div>
           <div class="fp-content">
-            <p class="fp-overline">Featured Project</p>
+            <p class="fp-overline">Latest Projectt</p>
             <h3 class="fp-title">AI-Enhanced ERP Knowledge Assistant</h3>
             <div class="fp-desc">
               An NLP retrieval assistant integrated directly into ERP workflows with traceable sources and access boundaries. Addressed the core problem of fragmented documentation and repetitive support cycles — resulting in faster issue resolution and better knowledge reuse.
@@ -968,25 +1035,57 @@
 
         <div class="featured-project fade">
           <div class="fp-img-wrap">
-            <div class="fp-img">
-              <span class="fp-img-label">02</span>
-            </div>
+            <a class="fp-img" href="#contact" aria-label="View details about the Vehicle License Plate Detection project">
+              <img class="fp-img-media" src="assets/license-plate-detection-flow.svg" alt="Vehicle license plate detection pipeline from data labeling to model deployment and monitoring" loading="lazy" />
+            </a>
           </div>
           <div class="fp-content">
-            <p class="fp-overline">Featured Project</p>
-            <h3 class="fp-title">Secure ERP Modernization &amp; Integration</h3>
+            <p class="fp-overline">Latest Projectt</p>
+            <h3 class="fp-title">Vehicle License Plate Detection: Labeling to Deployment</h3>
             <div class="fp-desc">
-              Implemented API-first integration patterns connecting legacy ERP workflows to secure cloud services. Delivered improved reliability, auditability, and end-to-end process visibility — with access controls aligned to compliance requirements.
+              Built an end-to-end computer vision pipeline for automatic vehicle plate detection and OCR. The project covers dataset curation, data labeling quality checks, YOLO-based model training, evaluation on real traffic scenarios, and containerized deployment for low-latency inference with monitoring.
             </div>
             <ul class="fp-stack">
-              <li>Odoo</li>
-              <li>Sage X3</li>
-              <li>PostgreSQL</li>
-              <li>Azure</li>
-              <li>APIs</li>
+              <li>Label Studio</li>
+              <li>OpenCV</li>
+              <li>YOLOv8</li>
+              <li>PyTorch</li>
+              <li>FastAPI</li>
+              <li>Docker</li>
             </ul>
             <div class="fp-links">
               <a href="#contact" title="Request details">
+                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="featured-project fade">
+          <div class="fp-img-wrap">
+            <a class="fp-img" href="#contact" aria-label="View details about the Data Pipeline project">
+              <img class="fp-img-media" src="assets/data-pipeline-flow.svg" alt="Data pipeline architecture from web scraping to cloud deployment with monitoring" loading="lazy" />
+            </a>
+          </div>
+          <div class="fp-content">
+            <p class="fp-overline">Latest Project</p>
+            <h3 class="fp-title">End-to-End Data Pipeline: Scraping to Deployment</h3>
+            <div class="fp-desc">
+              Built a production pipeline that extracts product and pricing data through resilient web scraping, lands raw datasets in a cloud data lake, applies ETL validation and transformations, and serves curated outputs to APIs and BI dashboards. Orchestrated schedules with Airflow, containerized workloads with Docker, and deployed with CI/CD plus operational monitoring.
+            </div>
+            <ul class="fp-stack">
+              <li>Scrapy</li>
+              <li>Airflow</li>
+              <li>dbt</li>
+              <li>PostgreSQL</li>
+              <li>Docker</li>
+              <li>Azure</li>
+            </ul>
+            <div class="fp-links">
+              <a href="#contact" title="Request details">
+                <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M9 19c-4 1.2-4-2-6-2m7 4v-3a3.4 3.4 0 0 0-.7-2.2c2.3-.3 4.7-1.1 4.7-5a3.9 3.9 0 0 0-1-2.7 3.6 3.6 0 0 0-.1-2.7s-.9-.3-3 1a10.4 10.4 0 0 0-6 0c-2.1-1.3-3-1-3-1a3.6 3.6 0 0 0-.1 2.7 3.9 3.9 0 0 0-1 2.7c0 3.9 2.4 4.7 4.7 5A3.4 3.4 0 0 0 9 15v3"/></svg>
+              </a>
+              <a href="#contact" title="External link">
                 <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
               </a>
             </div>
@@ -1070,9 +1169,9 @@
 
   <!-- FOOTER -->
   <footer>
-    <a href="https://github.com/bchiang7/v4" target="_blank" rel="noopener">
+    <a href="https://github.com/oelkhazraj-sys" target="_blank" rel="noopener">
     </a>
-    <p>Designed &amp; Built by Othman ELKHAZRAJE</p>
+    <p> By Othman ELKHAZRAJE</p>
   </footer>
 
   <!-- ════ SCRIPTS ════ -->
